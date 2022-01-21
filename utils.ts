@@ -1,4 +1,5 @@
 import { Level, Permissions } from './enums'
+import { Review } from './interfaces'
 
 const reviewTotalDisplay = document.querySelector('#reviews')
 const returningUserDisplay = document.querySelector('#returning-user')
@@ -29,3 +30,8 @@ export function showDetails(authorityStatus: boolean | Permissions, element : HT
         return 's'
     } else return ''
 }
+
+export function getTopTwoReviews(reviews : Review[]) : Review[]  {
+    const sortedReviews = reviews.sort((a, b) => b.stars - a.stars)
+    return sortedReviews.slice(0,2)
+   }
